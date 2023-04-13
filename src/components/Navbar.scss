@@ -1,0 +1,18 @@
+.Navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 46rem;
+    padding: 3.5rem; 
+    
+    &__options {
+        display: flex;
+        align-items: center;
+
+        &-toggle::before {
+            border-left: 1px solid #E9E9E9;
+            content: '';
+            margin-right: .8rem;
+        }
+    }
+
+}

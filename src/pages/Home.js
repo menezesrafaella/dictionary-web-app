@@ -1,11 +1,14 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 
+import "./Home.scss"
+import Searching from '../components/Searching'
+
 const Home = () => {
   return (
-    <div>
+    <div className='Home'>
         <Navbar />
-        Home
+        <Searching />
     </div>
   )
 }
