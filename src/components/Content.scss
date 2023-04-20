@@ -1,0 +1,29 @@
+.Content {
+
+    &__subtitle {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        
+        color: #757575;
+    }
+
+    &__more-info {
+        font-style: normal;
+        font-weight: 700;
+        line-height: 24px;
+            
+        color: #A445ED;
+    }
+
+    li::marker {
+        color: #A445ED;
+    }
+
+    li {
+        margin-bottom: 1rem;
+    }
+    
+
+}
