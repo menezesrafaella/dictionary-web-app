@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Select, Switch } from "antd";
 
 import Logo from "../assets/images/logo.svg";
@@ -7,22 +7,34 @@ import Moon from "../assets/icons/icon-moon.svg";
 import "./Navbar.scss";
 
 function Navbar() {
+  const [option, setOption] = useState('')
+
+  const handleChange = (value) => {
+    setOption(value, 'option')
+    console.log(`selected ${value}`);
+  };
+
+  useEffect(() => {
+    document.querySelector('.Home').style.fontFamily = option;
+  }, [option])
+
+  
   return (
     <header className="Navbar">
       <img src={Logo} alt="Logo" />
       <div className="Navbar__options">
         <Select
-          defaultValue="fontes"
+          defaultValue="Fontes"
           style={{ width: 95 }}
+          onChange={handleChange}
           options={[
-            { value: "jack", label: "Jack" },
-            { value: "lucy", label: "Lucy" },
-            { value: "Yiminghe", label: "yiminghe" },
-            { value: "disabled", label: "Disabled", disabled: true },
+            { value: "Inconsolata", label: "Mono" },
+            { value: "Inter", label: "Serif" },
+            { value: "Lora", label: "Sans Serif" },
           ]}
         />
         <span className="Navbar__options-toggle">
-          <Switch defaultChecked/>
+          <Switch/>
         </span>
         <img src={Moon} alt="Ícone da Lua" style={{ marginLeft: 12 }} />
       </div>
