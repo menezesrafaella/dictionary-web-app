@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar";
 
 import "./Home.scss";
 import Searching from "../components/Searching";
-import Title from "../components/Title";
 import IconPlay from "../assets/icons/icon-play.svg";
 import Content from "../components/Content";
 
@@ -15,7 +14,7 @@ const Home = () => {
         <Searching />
         <div className="Home__header">
           <div>
-            <Title />
+          <h1 className='Home__title'>keyboard</h1>
             <span className="Home__header-highlight">/ˈkiːbɔːd/</span>
           </div>
           <button className="Home__header-button" type="submit">

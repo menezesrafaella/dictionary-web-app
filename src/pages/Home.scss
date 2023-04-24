@@ -8,6 +8,14 @@
         width: 46rem;
     }
 
+    &__title {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 77px;
+        color: #2D2D2D;
+    }
+
     &__header {
         display: flex;
         justify-content: space-between;
