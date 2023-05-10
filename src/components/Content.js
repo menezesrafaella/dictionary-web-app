@@ -4,7 +4,6 @@ import React from "react";
 import "./Content.scss";
 
 const Content = ({ expression }) => {
-  console.log(expression.meanings);
 
   return (
     <section className="Content">

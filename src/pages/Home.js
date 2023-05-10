@@ -6,6 +6,7 @@ import Searching from "../components/Searching";
 import IconPlay from "../assets/icons/icon-play.svg";
 import Content from "../components/Content";
 import api from "../service/api";
+import NoContent from "../components/NoContent";
 
 const Home = () => {
   const [word, setWord] = useState("");
@@ -22,12 +23,14 @@ const Home = () => {
     meanings: word.meanings,
   };
 
+  const pathAudios = expression?.phonetic
+    ?.filter((a) => a.audio !== "")
+    .map((a) => a.audio);
+  const pathAudio = pathAudios && pathAudios[0];
+
   const playAudio = useCallback(() => {
     audioRef.current.play();
-  }, []);
-
-  const pathAudios = expression?.phonetic?.filter(a => a.audio !== '').map(a => a.audio);
-  const pathAudio = pathAudios && pathAudios[0];
+  }, [pathAudio]);
 
   const phonetics = expression?.phonetic?.map((p) => {
     return p.text;
@@ -41,23 +44,28 @@ const Home = () => {
         <Searching onWord={handleSearchWord} />
         {word ? (
           <>
-          <div className="Home__header">
-            <div>
-              <h1 className="Home__title">{expression.title}</h1>
-              <span className="Home__header-highlight">{phonetic}</span>
+            <div className="Home__header">
+              <div>
+                <h1 className="Home__title">{expression.title}</h1>
+                <span className="Home__header-highlight">{phonetic}</span>
+              </div>
+              <div>
+                <audio
+                  key={pathAudio}
+                  ref={audioRef}                  
+                >
+                  <source src={pathAudio} type="audio/mp3" />
+                </audio>
+                <button className="Home__header-button" onClick={playAudio}>
+                  <img src={IconPlay} alt="" />
+                </button>
+              </div>
             </div>
-            <div> 
-              <audio ref={audioRef}>
-                <source src={pathAudio} type="audio/mp3" />
-              </audio>
-              <button className="Home__header-button" onClick={playAudio}>
-                <img src={IconPlay} alt="" />
-              </button>
-            </div>
-          </div>
-          <Content expression={expression} />
+            <Content expression={expression} />
           </>
-        ) : null}
+        ) : (
+          <NoContent />
+        )}
       </div>
     </div>
   );
